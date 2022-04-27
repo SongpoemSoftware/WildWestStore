@@ -9,4 +9,15 @@ defmodule WildWestStore do
   def purchase(input) do
     input
   end
+
+end
+
+defmodule WildWestStore.CartItem do
+  @enforce_keys [:type, :price]
+
+  defstruct product: nil,
+            type: nil,
+            is_imported: false,
+            price: 0,
+            quantity: 1
 end
