@@ -4,15 +4,9 @@ defmodule TaxCalculator do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> TaxCalculator.hello()
-      :world
-
+  calculates the tax
   """
-  def hello do
-    :world
+  def calculate(input) do
+    input
   end
 end
