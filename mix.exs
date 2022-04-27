@@ -1,9 +1,9 @@
-defmodule TaxCalculator.MixProject do
+defmodule WildWestStore.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :tax_calculator,
+      app: :wild_west_store,
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,

@@ -1,6 +1,5 @@
-defmodule TaxCalculatorTest do
+defmodule WildWestStoreTest do
   use ExUnit.Case
-  doctest TaxCalculator
 
   setup do
     input_only_non_imported_items = """
@@ -26,11 +25,20 @@ defmodule TaxCalculatorTest do
   end
 
   describe "Summary with Sales tax and Total included" do
-    test "success - outmust result contains fields Sales Taxes and Total", %{
+    test "success - output result contains fields Sales Taxes and Total", %{
       only_non_imported_items: %{input: input, output: _output}
     } do
-      assert TaxCalculator.calculate(input) =~ "Sales Taxes"
-      assert TaxCalculator.calculate(input) =~ "Total"
+      assert WildWestStore.purchase(input) =~ "Sales Taxes"
+      assert WildWestStore.purchase(input) =~ "Total"
     end
+
+    test "success - output result contains correct sales tax", %{
+      only_non_imported_items: %{input: input, output: _output}
+    } do
+      assert WildWestStore.purchase(input) =~ "Sales Taxes"
+      assert WildWestStore.purchase(input) =~ "Total"
+    end
+
+
   end
 end
