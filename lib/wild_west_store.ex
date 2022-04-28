@@ -9,7 +9,6 @@ defmodule WildWestStore do
   def purchase(input) do
     input
   end
-
 end
 
 defmodule WildWestStore.CartItem do
@@ -20,4 +19,22 @@ defmodule WildWestStore.CartItem do
             is_imported: false,
             price: 0,
             quantity: 1
+
+  def from_line(string) do
+    list = String.split(string)
+    [quantity | remaining] = list
+    {price_string, without_price} = List.pop_at(remaining, -1)
+    {price_float, _} = Float.parse(price_string)
+    {_, without_price_and_at} = List.pop_at(without_price, -1)
+    title = Enum.join(without_price_and_at, " ")
+    is_imported = Enum.member?(without_price_and_at, "imported")
+
+    %__MODULE__{
+      quantity: String.to_integer(quantity),
+      product: title,
+      type: :book,
+      price: price_float,
+      is_imported: is_imported
+    }
+  end
 end
