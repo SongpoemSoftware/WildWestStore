@@ -24,12 +24,22 @@ defmodule WildWestStore.RecieptPrinter do
   end
 
   defp print_total_service_charge({items, str}) do
-    total_service_charges = 90
+    total_service_charges =
+      Enum.reduce(items, 0, fn %RecieptItem{service_tax: tax}, total -> tax + total end)
+
     {items, "#{str} \n Service tax: #{total_service_charges}"}
   end
 
-  defp print_total_amount({_items, str}) do
-    total_amount = 90
+  defp print_total_amount({items, str}) do
+    total_amount =
+      Enum.reduce(items, 0, fn %RecieptItem{
+                                 service_tax: tax,
+                                 cart_item: %CartItem{price: price, quantity: quantity}
+                               },
+                               total ->
+        price * quantity + tax + total
+      end)
+
     "#{str} \n Total: #{total_amount}"
   end
 
