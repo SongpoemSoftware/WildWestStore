@@ -6,7 +6,7 @@ defmodule WildWestStore.TaxCalculatorTest do
   describe "tax exempted product" do
     test "success - non imported item, quantity one" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :food,
         quantity: 1,
         price: 100,
@@ -18,7 +18,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - non imported item, quantity two" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :food,
         quantity: 2,
         price: 100,
@@ -30,7 +30,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - imported item, quantity one" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :food,
         quantity: 1,
         price: 100,
@@ -42,7 +42,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - imported item, quantity two" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :food,
         quantity: 2,
         price: 100,
@@ -54,7 +54,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - roundoff" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :food,
         quantity: 1,
         price: 1.2,
@@ -68,7 +68,7 @@ defmodule WildWestStore.TaxCalculatorTest do
   describe "tax non-exempted product" do
     test "success - non imported item, quantity one" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :perfume,
         quantity: 1,
         price: 100,
@@ -80,7 +80,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - non imported item, quantity two" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :perfume,
         quantity: 2,
         price: 100,
@@ -92,7 +92,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - imported item, quantity one" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :perfume,
         quantity: 1,
         price: 100,
@@ -104,7 +104,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "success - imported item, quantity two" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :perfume,
         quantity: 2,
         price: 100,
@@ -116,7 +116,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "roundoff" do
       item = %CartItem{
-        product: "Chocolates",
+        title: "Chocolates",
         type: :perfume,
         quantity: 2,
         price: 1.7,

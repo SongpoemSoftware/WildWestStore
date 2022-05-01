@@ -14,7 +14,7 @@ end
 defmodule WildWestStore.CartItem do
   @enforce_keys [:type, :price]
 
-  defstruct product: nil,
+  defstruct title: "some prod",
             type: nil,
             is_imported: false,
             price: 0,
@@ -31,10 +31,13 @@ defmodule WildWestStore.CartItem do
 
     %__MODULE__{
       quantity: String.to_integer(quantity),
-      product: title,
+      title: title,
       type: :book,
       price: price_float,
       is_imported: is_imported
     }
+  end
+
+  def add_service_tax_to_item(%__MODULE__{} = _item) do
   end
 end
