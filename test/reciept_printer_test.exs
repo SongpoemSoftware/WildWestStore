@@ -78,7 +78,7 @@ defmodule WildWestStore.RecieptPrinterTest do
     test "success - contains correct total Sales tax", %{
       items_single: items
     } do
-      assert RecieptPrinter.print(items) =~ "Service tax: 0"
+      assert RecieptPrinter.print(items) =~ "Sales Taxes: 0"
     end
 
     test "success - contains correct Total Amount", %{
@@ -90,7 +90,7 @@ defmodule WildWestStore.RecieptPrinterTest do
 
   describe "reciept for single line item, imported." do
     test "success - contains Sales tax and Total field", %{items_single: items} do
-      assert RecieptPrinter.print(items) =~ "Service tax"
+      assert RecieptPrinter.print(items) =~ "Sales Taxes"
       assert RecieptPrinter.print(items) =~ "Total"
     end
 
@@ -101,7 +101,7 @@ defmodule WildWestStore.RecieptPrinterTest do
     test "success - contains correct amout of Sales tax", %{
       imported_items_single: items
     } do
-      assert RecieptPrinter.print(items) =~ "Service tax: 35"
+      assert RecieptPrinter.print(items) =~ "Sales Taxes: 35"
     end
 
     test "success - contains correct Total Amount", %{
@@ -121,7 +121,7 @@ defmodule WildWestStore.RecieptPrinterTest do
     test "success - contains correct Sales tax", %{
       items_multiple: items
     } do
-      assert RecieptPrinter.print(items) =~ "Service tax: 0"
+      assert RecieptPrinter.print(items) =~ "Sales Taxes: 0"
     end
   end
 
@@ -134,7 +134,7 @@ defmodule WildWestStore.RecieptPrinterTest do
     test "success - contains correct amout of Sales tax", %{
       imported_items_multiple: items
     } do
-      assert RecieptPrinter.print(items) =~ "Service tax: 160"
+      assert RecieptPrinter.print(items) =~ "Sales Taxes: 160"
     end
 
     test "success - contains correct Total Amount", %{
