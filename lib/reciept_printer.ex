@@ -15,7 +15,7 @@ defmodule WildWestStore.RecieptPrinter do
     #     "#{acc}\n #{print_one(item)}"
     #   end)
     list
-    |> Enum.map(fn item ->
+    |> Enum.map(fn %CartItem{} = item ->
       %RecieptItem{cart_item: item, service_tax: TaxCalculator.calculate(item)}
     end)
     |> print_all_items

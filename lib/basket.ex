@@ -12,6 +12,4 @@ defmodule WildWestStore.Basket do
   defp decode_line(line) do
     CartItem.from_line(line)
   end
-
-
 end

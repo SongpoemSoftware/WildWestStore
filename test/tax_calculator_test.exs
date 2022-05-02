@@ -3,7 +3,7 @@ defmodule WildWestStore.TaxCalculatorTest do
   alias WildWestStore.TaxCalculator
   alias WildWestStore.CartItem
 
-  describe "zero service tax for exempted product, locally. Single quantity" do
+  describe "zero Sales Taxes for exempted product, locally. Single quantity" do
     setup do
       %{
         item: %CartItem{
@@ -35,7 +35,7 @@ defmodule WildWestStore.TaxCalculatorTest do
     end
   end
 
-  describe "zero service tax for exempted product, locally. multiple quantity" do
+  describe "zero Sales Taxes for exempted product, locally. multiple quantity" do
     setup do
       %{
         item: %CartItem{
@@ -67,7 +67,7 @@ defmodule WildWestStore.TaxCalculatorTest do
     end
   end
 
-  describe "correct service tax for non-exempt product, locally." do
+  describe "correct Sales Taxes for non-exempt product, locally." do
     setup do
       %{
         item: %CartItem{
@@ -91,7 +91,7 @@ defmodule WildWestStore.TaxCalculatorTest do
     end
   end
 
-  describe "correct service tax for non-exempt product, imported." do
+  describe "correct Sales Taxes for non-exempt product, imported." do
     setup do
       %{
         item: %CartItem{
@@ -106,7 +106,7 @@ defmodule WildWestStore.TaxCalculatorTest do
 
     test "Product - exempted", %{item: item} do
       item = %CartItem{item | price: 100, quantity: 1, type: :food}
-      assert TaxCalculator.calculate(item) == 10
+      assert TaxCalculator.calculate(item) == 5
     end
 
     test "Product - non-exempted", %{item: item} do
