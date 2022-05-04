@@ -1,4 +1,6 @@
 defmodule WildWestStore do
+  alias WildWestStore.{Basket, RecieptPrinter}
+
   @moduledoc """
   Big Bills Shop, Wild West Store operations.
   """
@@ -8,6 +10,9 @@ defmodule WildWestStore do
   """
   def purchase(input) do
     input
+    |> Basket.decode()
+    |> RecieptPrinter.print()
+    |> String.trim()
   end
 end
 
