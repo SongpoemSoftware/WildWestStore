@@ -17,6 +17,9 @@ defmodule WildWestStore do
 end
 
 defmodule WildWestStore.CartItem do
+  alias WildWestStore.Product
+  alias WildWestStore.ProductClassifier
+
   @enforce_keys [:type, :price]
 
   defstruct title: "some prod",
@@ -31,13 +34,16 @@ defmodule WildWestStore.CartItem do
     {price_string, without_price} = List.pop_at(remaining, -1)
     {price_float, _} = Float.parse(price_string)
     {_, without_price_and_at} = List.pop_at(without_price, -1)
-    title = Enum.join(without_price_and_at, " ")
-    is_imported = Enum.member?(without_price_and_at, "imported")
+
+    %Product{title: title, type: type, is_imported: is_imported} =
+      without_price_and_at
+      |> Enum.join(" ")
+      |> ProductClassifier.classify()
 
     %__MODULE__{
       quantity: String.to_integer(quantity),
       title: title,
-      type: :book,
+      type: type,
       price: price_float,
       is_imported: is_imported
     }
