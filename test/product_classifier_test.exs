@@ -55,4 +55,18 @@ defmodule WildWestStore.ProductClassifierTest do
       end
     end
   end
+
+  describe "correct title of product." do
+    for item <- ["imported box of chocolates", "box of imported chocolates"] do
+      test "success -  #{item}" do
+        item = "imported box of chocolates"
+
+        prod =
+          unquote(item)
+          |> ProductClassifier.classify()
+
+        assert Map.get(prod, :title) == "imported box of chocolates"
+      end
+    end
+  end
 end

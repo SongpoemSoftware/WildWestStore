@@ -48,7 +48,7 @@ defmodule WildWestStore.RecieptPrinterTest do
           quantity: 1
         },
         %CartItem{
-          title: "box of imported dates",
+          title: "imported box of dates",
           type: :food,
           is_imported: true,
           price: 100,

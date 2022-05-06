@@ -18,6 +18,25 @@ defmodule WildWestStore.ProductClassifier do
 
     imported_flag = String.contains?(string, @imported)
 
-    %Product{type: type, is_imported: imported_flag, title: string}
+    title =
+      if imported_flag do
+        prepare_title(string, "imported ")
+      else
+        prepare_title(string, "")
+      end
+
+    %Product{type: type, is_imported: imported_flag, title: title}
+  end
+
+  def prepare_title(string, prefix \\ "") do
+    flag = "imported"
+
+    suffix =
+      string
+      |> String.split(flag, trim: true)
+      |> Enum.map(&String.trim(&1))
+      |> Enum.join(" ")
+
+    prefix <> suffix
   end
 end
